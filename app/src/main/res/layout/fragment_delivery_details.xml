@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_margin="@dimen/standard_16dp"
+    android:layout_height="fill_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clFromTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:padding="@dimen/standard_8dp"
+        app:layout_constraintBottom_toTopOf="@+id/rlGoods"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/sender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/from"
+            android:textSize="@dimen/standard_font_20sp"
+            app:layout_constraintBottom_toTopOf="@+id/receiver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/senderTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/sender"
+            android:gravity="end"
+            android:textSize="@dimen/standard_font_20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/sender"
+            app:layout_constraintTop_toTopOf="@+id/sender" />
+
+        <TextView
+            android:id="@+id/receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/to"
+            android:textSize="@dimen/standard_font_20sp"
+            android:layout_marginTop="@dimen/standard_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sender" />
+
+        <TextView
+            android:id="@+id/receiverTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:textSize="@dimen/standard_font_20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/sender"
+            app:layout_constraintTop_toTopOf="@+id/receiver" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlGoods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:background="@drawable/border"
+        android:padding="@dimen/standard_8dp"
+        android:layout_below="@+id/clFromTo">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/goods_to_deliver"
+            android:textSize="@dimen/standard_font_20sp" />
+
+        <ImageView
+            android:id="@+id/ivGoods"
+            android:layout_width="@dimen/standard_200dp"
+            android:layout_height="@dimen/standard_200dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/standard_30dp"
+            android:textSize="@dimen/standard_font_20sp"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlFees"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_8dp"
+        android:background="@drawable/border"
+        android:padding="@dimen/standard_8dp"
+        android:layout_below="@+id/rlGoods">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/delivery_fee"
+            android:textSize="@dimen/standard_font_20sp" />
+
+        <TextView
+            android:id="@+id/tvFees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/standard_font_20sp" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/llAddToFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/border"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvAddToFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@android:drawable/btn_star_big_off"
+            android:gravity="center"
+            android:padding="@dimen/standard_8dp"
+            android:text="@string/add_to_favorite"
+            android:textSize="@dimen/standard_font_20sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</RelativeLayout>

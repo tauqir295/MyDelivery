@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">My-Delivery</string>
+    <string name="from">From :</string>
+    <string name="to">To :</string>
+    <string name="goods_to_deliver">Goods to deliver</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="add_to_favorite">Add to Favorite</string>
+    <string name="delivery">delivery</string>
+    <string name="api_failed">API Failed</string>
+    <string name="something_went_wrong">Something went wrong.</string>
+    <string name="ok">OK</string>
+    <string name="stub">stub</string>
+    <string name="database_name">delivery_database</string>
+    <string name="stub_file_name">stub.json</string>
+</resources>

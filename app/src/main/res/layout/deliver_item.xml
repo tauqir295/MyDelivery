@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/standard_8dp"
+    android:background="@drawable/border"
+    android:padding="@dimen/standard_8dp">
+
+    <ImageView
+        android:id="@+id/ivGoodsPic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/sender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standard_4dp"
+        android:text="@string/from"
+        app:layout_constraintBottom_toTopOf="@+id/receiver"
+        app:layout_constraintStart_toEndOf="@+id/ivGoodsPic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/receiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/to"
+        android:layout_marginTop="@dimen/standard_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/sender"
+        app:layout_constraintTop_toBottomOf="@+id/sender" />
+
+    <TextView
+        android:id="@+id/senderTv"
+        android:layout_width="@dimen/standard_200dp"
+        android:layout_height="wrap_content"
+        android:text=" Sender Address "
+        app:layout_constraintBottom_toBottomOf="@+id/sender"
+        app:layout_constraintStart_toEndOf="@+id/sender"
+        app:layout_constraintTop_toTopOf="@+id/sender" />
+
+    <TextView
+        android:id="@+id/receiverTv"
+        android:layout_width="@dimen/standard_200dp"
+        android:layout_height="wrap_content"
+        android:text=" receiver Address "
+        app:layout_constraintBottom_toBottomOf="@+id/receiver"
+        app:layout_constraintStart_toEndOf="@+id/sender"
+        app:layout_constraintTop_toTopOf="@+id/receiver" />
+
+
+    <TextView
+        android:id="@+id/feesTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Fees "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivFavorite" />
+
+    <ImageView
+        android:id="@+id/ivFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
