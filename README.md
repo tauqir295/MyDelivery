@@ -8,8 +8,7 @@ Tools:
 
 All the latest library has been used
 
-The test cases has been written for Stub flavor only and
-may not run on other build flavor
+The test cases has been written for Stub flavor
 
 The device used for testing
 1. Google pixel 2
