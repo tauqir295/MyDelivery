@@ -24,6 +24,7 @@ import com.my.delivery.deliverylist.model.Delivery
 import com.my.delivery.deliverylist.storage.AppDatabase
 import com.my.delivery.deliverylist.storage.DeliveryDao
 import com.my.delivery.general.manager.ConfigurationManager
+import com.my.delivery.ui.MainActivity
 import com.my.delivery.utils.Logger
 import com.my.delivery.utils.replaceWithNextFragment
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -146,8 +147,11 @@ class DeliveryListFragment : Fragment(), DeliveryRecyclerAdapter.OnRecyclerItemC
                 viewModel.getDeliveryList(offset, limit, requireActivity().applicationContext)
 
             } else {
-                deliveryDao?.getAllDeliveries()?.let { it ->
-                    adapter.addAllItem(it.toList().toMutableList()) // passing deliveries to adapter
+
+                if (MainActivity.IS_FROM_DELIVERY_DETAIL_SCREEN) {
+                    deliveryDao?.getAllDeliveries()?.let { it ->
+                        adapter.addAllItem(it.toList().toMutableList()) // passing deliveries to adapter
+                    }
                 }
 
                 // needed to set offset on load more after scrolling
@@ -164,14 +168,17 @@ class DeliveryListFragment : Fragment(), DeliveryRecyclerAdapter.OnRecyclerItemC
      * Saving the list in room database and passing the same to adapter
      */
     private fun saveInDB(deliveries: ArrayList<Delivery>) {
-        deliveries.let {
-            deliveries.forEach { delivery ->
-                deliveryDao?.insertAll(delivery) // database insertion
-            }
-            deliveryDao?.getAllDeliveries()?.let { it ->
-                adapter.addAllItem(it.toList().toMutableList()) // passing deliveries to adapter
+        if (!MainActivity.IS_FROM_DELIVERY_DETAIL_SCREEN) {
+            deliveries.let {
+                deliveries.forEach { delivery ->
+                    deliveryDao?.insertAll(delivery) // database insertion
+                }
+                deliveryDao?.getAllDeliveries()?.let { it ->
+                    adapter.addAllItem(it.toList().toMutableList()) // passing deliveries to adapter
+                }
             }
         }
+
     }
 
     /**
@@ -198,6 +205,7 @@ class DeliveryListFragment : Fragment(), DeliveryRecyclerAdapter.OnRecyclerItemC
      *
      */
     override fun onLoadMore() {
+        MainActivity.IS_FROM_DELIVERY_DETAIL_SCREEN = false
         adapter.addProgressView() // setting the progress bar visible
         activity?.let {
             viewModel.getDeliveryList(offset, limit, it.applicationContext)
@@ -212,14 +220,16 @@ class DeliveryListFragment : Fragment(), DeliveryRecyclerAdapter.OnRecyclerItemC
             Observer {
                 setProgressAndScrollVariablesStatus()
 
-                AlertDialog.Builder(requireContext())
-                    .setTitle(getString(R.string.api_failed))
-                    .setMessage(getString(R.string.something_went_wrong))
-                    .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .setCancelable(false)
-                    .show()
+                if (!MainActivity.IS_FROM_DELIVERY_DETAIL_SCREEN) {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(getString(R.string.api_failed))
+                        .setMessage(getString(R.string.something_went_wrong))
+                        .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .setCancelable(false)
+                        .show()
+                }
             })
     }
 

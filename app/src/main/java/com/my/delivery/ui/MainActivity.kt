@@ -22,8 +22,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> onBackPressed() // navigating back when home icon is pressed
+            android.R.id.home -> {
+                onBackPressed() // navigating back when home icon is pressed
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        IS_FROM_DELIVERY_DETAIL_SCREEN = true
+        super.onBackPressed()
+    }
+
+    companion object {
+        // use this variable to manage loading of data in adapter from Database
+        // if user has navigated back from detail screen then discard the changes observed on list
+        // via model view.
+        var IS_FROM_DELIVERY_DETAIL_SCREEN: Boolean = false
     }
 }
