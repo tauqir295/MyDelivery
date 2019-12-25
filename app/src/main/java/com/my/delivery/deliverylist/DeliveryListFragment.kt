@@ -63,6 +63,7 @@ class DeliveryListFragment : Fragment(), DeliveryRecyclerAdapter.OnRecyclerItemC
      * initiating recyclerView and view model, setting up pagination
      */
     private fun initView() {
+        activity?.title = getString(R.string.delivery_list_title)
         //disabling the home back button
         val activity = activity as AppCompatActivity?
         activity?.supportActionBar?.setDisplayHomeAsUpEnabled(false)

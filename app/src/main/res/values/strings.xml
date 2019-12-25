@@ -12,4 +12,6 @@
     <string name="stub">stub</string>
     <string name="database_name">delivery_database</string>
     <string name="stub_file_name">stub.json</string>
+    <string name="delivery_list_title">Delivery List</string>
+    <string name="delivery_detail_title">Delivery Detail</string>
 </resources>

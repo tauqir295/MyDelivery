@@ -47,6 +47,7 @@ class DeliveryDetailsFragment : Fragment() {
      * @param:delivery - populate the data on UI based on [delivery]
      */
     private fun initView(delivery: Delivery) {
+        activity?.title = getString(R.string.delivery_detail_title)
         senderTv.text = delivery.route.start
         receiverTv.text = delivery.route.end
 
